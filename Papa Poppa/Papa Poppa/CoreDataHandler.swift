@@ -37,4 +37,8 @@ class CoreDataHandler {
             callback(Level(1), error)
         }
     }
+    
+    public static func save(level: Level, _ cb: () -> ()) {
+        
+    }
 }

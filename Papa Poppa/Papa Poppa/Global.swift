@@ -10,10 +10,23 @@ import Foundation
 import UIKit
 import CoreData
 
-// MARK: - Globals variables
+// MARK: - Global variables
 
 
 
+// MARK: - Global functions
+
+func random() -> CGFloat {
+    return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+}
+
+func random(min: CGFloat, max: CGFloat) -> CGFloat {
+    return random() * (max - min) + min
+}
+
+func random(min: Int, max: Int) -> Int {
+    return Int(random()) * (max - min) + min
+}
 
 // MARK: - Extensions
 
@@ -24,10 +37,22 @@ extension UIColor {
 }
 
 extension Level {
-    convenience init(_ number: Int16) {
+    convenience init(_ number: Int16, _ best: Int16 = 0) {
         self.init()
         
         self.number = number
-        self.best = 0
+        self.best = best
+    }
+}
+
+extension CGRect {
+    func intersectsAnyOf(_ otherViews: [UIView]) -> Bool {
+        for b in otherViews {
+            if self.intersects(b.frame) {
+                return true
+            }
+        }
+        
+        return false
     }
 }
