@@ -12,7 +12,7 @@ import CoreData
 
 // MARK: - Global variables
 
-var GAME_VIEW_CONTROLLER: GameViewController?
+
 
 // MARK: - Global functions
 

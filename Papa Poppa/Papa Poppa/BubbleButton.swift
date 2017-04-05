@@ -9,7 +9,7 @@
 import UIKit
 
 class BubbleButton: UIButton {
-    var scene: GameScene?
+    var vc: GameViewController?
     var duration: Int?
     var spawn_time: Date?
     var popped = false
@@ -26,36 +26,41 @@ class BubbleButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(frame: CGRect, scene: GameScene, withDurationBetween durationRange: [Int]) {
+    convenience init(frame: CGRect, vc: GameViewController, withDurationBetween durationRange: [Int]) {
         self.init(frame: frame)
         
+        self.createGradient()
+        
         print("this should print second")
-        self.scene = scene
+        self.vc = vc
         self.duration = random(min: durationRange[0], max: durationRange[1])
         self.spawn_time = Date.init(timeIntervalSinceNow: 0)
+        
+        self.setTitle("\(duration ?? -1)", for: .normal)
         
         startPopTimer()
     }
     
-    override func draw(_ rect: CGRect) {
+    func createGradient() {
         let gradient = CAGradientLayer()
         gradient.frame = frame
         gradient.colors = [UIColor.white.cgColor, UIColor.bubbleBlue.cgColor]
-        self.titleLabel!.text = "\(duration ?? -1)"
+        
+        self.layer.insertSublayer(gradient, at: 0)
     }
     
     @IBAction func touchUpInside(_ sender: Any) {
         popped = true
-        
-        self.scene?.registerBubblePop(score: score)
+        print("touched")
+        self.vc?.registerBubblePop(score: score)
         removeFromSuperview()
     }
     
-    static func generateRandomFrame (in viewBounds: CGRect) -> CGRect {
+    static func generateRandomFrame(in bounds: CGRect) -> CGRect {
         let width = random(min: 50.0, max: 70.0)
         let height = width
-        let x = random(min: viewBounds.minX, max: viewBounds.maxX - width)
-        let y = random(min: viewBounds.minY, max: viewBounds.maxY - height)
+        let x = random(min: bounds.minX, max: bounds.maxX - width)
+        let y = random(min: bounds.minY, max: bounds.maxY - height)
         print("yeah it's the view i guess")
         return CGRect(x: x, y: y, width: width, height: height)
     }
@@ -64,7 +69,7 @@ class BubbleButton: UIButton {
         let deadlineTime = DispatchTime.now() + .seconds(duration!)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             if !self.popped {
-                self.scene?.registerBubblePop(score: self.score)
+                self.vc!.registerBubblePop(score: self.score)
                 self.removeFromSuperview()
             }
         }
