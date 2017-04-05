@@ -37,11 +37,12 @@ extension UIColor {
 }
 
 extension Level {
-    convenience init(_ number: Int16, _ best: Int16 = 0) {
+    convenience init(_ number: Int16, _ best: Int16 = 0, _ isCurrent: Bool = true) {
         self.init()
         
         self.number = number
         self.best = best
+        self.isCurrent = isCurrent
     }
 }
 

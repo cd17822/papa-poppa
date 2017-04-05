@@ -36,6 +36,13 @@ class BubbleButton: UIButton {
         self.titleLabel!.text = "\(duration!)"
     }
     
+    @IBAction func touchUpInside(_ sender: Any) {
+        let now = Date.init(timeIntervalSinceNow: 0)
+        let score = Int16(now.compare(spawn_time!).rawValue)
+        
+        self.scene?.registerBubblePop(score: score)
+    }
+    
     static func generateRandomFrame (in viewBounds: CGRect) -> CGRect {
         let width = random(min: 50.0, max: 70.0)
         let height = width

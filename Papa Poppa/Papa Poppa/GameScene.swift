@@ -29,8 +29,8 @@ class GameScene: SKScene {
         }
     }
     
-    func loadLevel(_ cb: (() -> ())) {
-        CoreDataHandler.getLevel { level, error in
+    func loadLevel(_ cb: @escaping (() -> ())) {
+        CoreDataHandler.getCurrentLevel { level, error in
             if error != nil {
                 print(error!)
             }
@@ -90,7 +90,11 @@ class GameScene: SKScene {
     
     func concludeLevel() {
         let level_to_save = Level(level!.number, score)
-        CoreDataHandler.save(level: level_to_save) {
+        CoreDataHandler.save(level: level_to_save) { error in
+            if error != nil {
+                print(error!)
+            }
+            
             self.presentMenuScreen()
         }
     }
