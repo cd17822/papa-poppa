@@ -12,7 +12,7 @@ import CoreData
 
 // MARK: - Global variables
 
-
+var GAME_VIEW_CONTROLLER: GameViewController?
 
 // MARK: - Global functions
 
@@ -33,16 +33,6 @@ func random(min: Int, max: Int) -> Int {
 extension UIColor {
     static var bubbleBlue: UIColor {
         return UIColor(red:0.67, green:0.93, blue:0.99, alpha:1.00)
-    }
-}
-
-extension Level {
-    convenience init(_ number: Int16, _ best: Int16 = 0, _ isCurrent: Bool = true) {
-        self.init()
-        
-        self.number = number
-        self.best = best
-        self.isCurrent = isCurrent
     }
 }
 

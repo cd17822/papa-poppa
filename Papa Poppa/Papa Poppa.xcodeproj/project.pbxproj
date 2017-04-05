@@ -20,7 +20,7 @@
 		CBA1DEE91E948B410003D5C3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEE81E948B410003D5C3 /* Global.swift */; };
 		CBA1DEEB1E948E390003D5C3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEEA1E948E390003D5C3 /* MenuView.swift */; };
 		CBA1DEED1E9490010003D5C3 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEEC1E9490010003D5C3 /* CoreDataHandler.swift */; };
-		CBA1DEF01E94912B0003D5C3 /* Papa Poppa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEEE1E94912B0003D5C3 /* Papa Poppa.xcdatamodeld */; };
+		CBA1DEF01E94912B0003D5C3 /* PapaPoppa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEEE1E94912B0003D5C3 /* PapaPoppa.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		CBA1DEE81E948B410003D5C3 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		CBA1DEEA1E948E390003D5C3 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		CBA1DEEC1E9490010003D5C3 /* CoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
-		CBA1DEEF1E94912B0003D5C3 /* Papa Poppa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Papa Poppa.xcdatamodel"; sourceTree = "<group>"; };
+		CBA1DEEF1E94912B0003D5C3 /* PapaPoppa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PapaPoppa.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 				CBA1DED51E9441CB0003D5C3 /* Assets.xcassets */,
 				CBA1DED71E9441CB0003D5C3 /* LaunchScreen.storyboard */,
 				CBA1DEDA1E9441CB0003D5C3 /* Info.plist */,
-				CBA1DEEE1E94912B0003D5C3 /* Papa Poppa.xcdatamodeld */,
+				CBA1DEEE1E94912B0003D5C3 /* PapaPoppa.xcdatamodeld */,
 			);
 			path = "Papa Poppa";
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBA1DEED1E9490010003D5C3 /* CoreDataHandler.swift in Sources */,
-				CBA1DEF01E94912B0003D5C3 /* Papa Poppa.xcdatamodeld in Sources */,
+				CBA1DEF01E94912B0003D5C3 /* PapaPoppa.xcdatamodeld in Sources */,
 				CBA1DEE91E948B410003D5C3 /* Global.swift in Sources */,
 				CBA1DEEB1E948E390003D5C3 /* MenuView.swift in Sources */,
 				CBA1DECF1E9441CB0003D5C3 /* GameScene.swift in Sources */,
@@ -346,13 +346,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CBA1DEEE1E94912B0003D5C3 /* Papa Poppa.xcdatamodeld */ = {
+		CBA1DEEE1E94912B0003D5C3 /* PapaPoppa.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CBA1DEEF1E94912B0003D5C3 /* Papa Poppa.xcdatamodel */,
+				CBA1DEEF1E94912B0003D5C3 /* PapaPoppa.xcdatamodel */,
 			);
-			currentVersion = CBA1DEEF1E94912B0003D5C3 /* Papa Poppa.xcdatamodel */;
-			path = "Papa Poppa.xcdatamodeld";
+			currentVersion = CBA1DEEF1E94912B0003D5C3 /* PapaPoppa.xcdatamodel */;
+			path = PapaPoppa.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

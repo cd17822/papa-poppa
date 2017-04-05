@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataHandler {
     private static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "YaGotFoodDude")
+        let container = NSPersistentContainer(name: "PapaPoppa")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
                 fatalError("Unresolved error \(error)")
@@ -19,6 +19,14 @@ class CoreDataHandler {
         })
         return container
     }()
+    
+    public static var default_level_1: Level {
+        let level = Level(context: persistentContainer.viewContext)
+        level.number = 1
+        level.best = 0
+        level.isCurrent = true
+        return level
+    }
     
     private static func fetchLevels(_ callback: ((_ levels: [Level], _ error: NSError?) -> Void)) {
         let request = NSFetchRequest<Level>(entityName: "Level")
@@ -33,17 +41,19 @@ class CoreDataHandler {
     public static func getCurrentLevel(_ callback: @escaping ((_ level: Level, _ error: NSError?) -> Void)) {
         fetchLevels { levels, error in
             if error != nil {
-                callback(Level(1), error)
+                callback(self.default_level_1, error)
             }else{
-                var current_level = Level(1)
-                
+                print("calling conv init")
+                var current_level = self.default_level_1
+                print("called")
                 for level in levels {
                     if level.isCurrent {
                         current_level = level
+                        print("got something")
                         break
                     }
                 }
-                
+                print("got nothin")
                 callback(current_level, nil)
             }
         }

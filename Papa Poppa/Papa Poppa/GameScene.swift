@@ -12,7 +12,6 @@ import GameplayKit
 class GameScene: SKScene {
     var waiting_for_start = false // should be true once menu is implemented
     var level: Level?
-    var view_controller: GameViewController?
     var bubbles_drawn = 0
     var bubbles_tapped = 0
     var score: Int16 = 0
@@ -21,6 +20,7 @@ class GameScene: SKScene {
         super.init(coder: aDecoder)
         
         loadLevel {
+            print("level loaded wooooooooooooooooo")
             if self.waiting_for_start {
                 self.presentMenuScreen()
             } else {
@@ -34,7 +34,7 @@ class GameScene: SKScene {
             if error != nil {
                 print(error!)
             }
-            
+            print("------------got current level")
             self.level = level
             
             cb()
@@ -47,16 +47,17 @@ class GameScene: SKScene {
     }
     
     func beginLevel() {
-        view_controller!.setLabels(level: level!)
+        GAME_VIEW_CONTROLLER!.setLabels(level: level!)
         generateBubbles()
     }
     
     func generateBubbles() {
+        print("looking for level nooooooooooooooooo")
         switch level!.number {
         case 1:
             drawBubbles(amount: 1, withDurationBetween: [3,6])
         default:
-            level = Level(1)
+            level = CoreDataHandler.default_level_1
             generateBubbles()
         }
     }
@@ -64,18 +65,20 @@ class GameScene: SKScene {
     func drawBubbles(amount: Int, withDurationBetween durationRange: [Int]) {
         bubbles_drawn = amount
         let bubbles = [BubbleButton]()
-        
+        print("gere1")
         for _ in 0..<amount {
-            var frame = BubbleButton.generateRandomFrame(in: view!.frame)
-            
+            var frame = BubbleButton.generateRandomFrame(in: GAME_VIEW_CONTROLLER!.view!.frame)
+            print("gere")
             while frame.intersectsAnyOf(bubbles) {
-                frame = BubbleButton.generateRandomFrame(in: view!.frame)
+                frame = BubbleButton.generateRandomFrame(in: GAME_VIEW_CONTROLLER!.view!.frame)
             }
-         
+            print("richard")
             let bubble = BubbleButton(frame: frame, scene: self, withDurationBetween: durationRange)
-            
-            self.view!.addSubview(bubble)
+            print("aaaaaaaaaaaaaaaaaaaaaaaaand")
+            GAME_VIEW_CONTROLLER!.view!.addSubview(bubble)
+            print("not here")
         }
+        print("bubbles drawn")
     }
     
     func registerBubblePop(score: Int16) {
@@ -89,9 +92,7 @@ class GameScene: SKScene {
     }
     
     func concludeLevel() {
-        let level_to_save = Level(level!.number, score)
-        print("levelover")
-        CoreDataHandler.save(level: level_to_save) { error in
+        CoreDataHandler.save(level: level!) { error in
             if error != nil {
                 print(error!)
             }

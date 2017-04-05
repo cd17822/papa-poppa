@@ -29,18 +29,19 @@ class BubbleButton: UIButton {
     convenience init(frame: CGRect, scene: GameScene, withDurationBetween durationRange: [Int]) {
         self.init(frame: frame)
         
-        startPopTimer()
         print("this should print second")
         self.scene = scene
         self.duration = random(min: durationRange[0], max: durationRange[1])
         self.spawn_time = Date.init(timeIntervalSinceNow: 0)
+        
+        startPopTimer()
     }
     
     override func draw(_ rect: CGRect) {
         let gradient = CAGradientLayer()
         gradient.frame = frame
         gradient.colors = [UIColor.white.cgColor, UIColor.bubbleBlue.cgColor]
-        self.titleLabel!.text = "\(duration!)"
+        self.titleLabel!.text = "\(duration ?? -1)"
     }
     
     @IBAction func touchUpInside(_ sender: Any) {
@@ -55,7 +56,7 @@ class BubbleButton: UIButton {
         let height = width
         let x = random(min: viewBounds.minX, max: viewBounds.maxX - width)
         let y = random(min: viewBounds.minY, max: viewBounds.maxY - height)
-        
+        print("yeah it's the view i guess")
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
@@ -63,7 +64,7 @@ class BubbleButton: UIButton {
         let deadlineTime = DispatchTime.now() + .seconds(duration!)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             if !self.popped {
-                self.scene!.registerBubblePop(score: self.score)
+                self.scene?.registerBubblePop(score: self.score)
                 self.removeFromSuperview()
             }
         }
