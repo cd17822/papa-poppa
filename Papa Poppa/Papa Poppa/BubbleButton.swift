@@ -12,6 +12,11 @@ class BubbleButton: UIButton {
     var scene: GameScene?
     var duration: Int?
     var spawn_time: Date?
+    var popped = false
+    var score: Int16 {
+        let now = Date.init(timeIntervalSinceNow: 0)
+        return Int16(now.compare(spawn_time!).rawValue)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +29,8 @@ class BubbleButton: UIButton {
     convenience init(frame: CGRect, scene: GameScene, withDurationBetween durationRange: [Int]) {
         self.init(frame: frame)
         
+        startPopTimer()
+        print("this should print second")
         self.scene = scene
         self.duration = random(min: durationRange[0], max: durationRange[1])
         self.spawn_time = Date.init(timeIntervalSinceNow: 0)
@@ -37,10 +44,10 @@ class BubbleButton: UIButton {
     }
     
     @IBAction func touchUpInside(_ sender: Any) {
-        let now = Date.init(timeIntervalSinceNow: 0)
-        let score = Int16(now.compare(spawn_time!).rawValue)
+        popped = true
         
         self.scene?.registerBubblePop(score: score)
+        removeFromSuperview()
     }
     
     static func generateRandomFrame (in viewBounds: CGRect) -> CGRect {
@@ -50,5 +57,15 @@ class BubbleButton: UIButton {
         let y = random(min: viewBounds.minY, max: viewBounds.maxY - height)
         
         return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    func startPopTimer() {
+        let deadlineTime = DispatchTime.now() + .seconds(duration!)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            if !self.popped {
+                self.scene!.registerBubblePop(score: self.score)
+                self.removeFromSuperview()
+            }
+        }
     }
 }

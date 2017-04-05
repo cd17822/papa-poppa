@@ -81,7 +81,7 @@ class GameScene: SKScene {
     func registerBubblePop(score: Int16) {
         self.score += score
         self.bubbles_tapped += 1
-        
+        print("popped")
         if self.bubbles_tapped == self.bubbles_drawn {
             concludeLevel()
         }
@@ -90,11 +90,12 @@ class GameScene: SKScene {
     
     func concludeLevel() {
         let level_to_save = Level(level!.number, score)
+        print("levelover")
         CoreDataHandler.save(level: level_to_save) { error in
             if error != nil {
                 print(error!)
             }
-            
+            print("levelsaved")
             self.presentMenuScreen()
         }
     }
