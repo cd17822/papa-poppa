@@ -9,12 +9,14 @@
 import Foundation
 import CoreData
 
+// Deals with all persistent data handling and always takes a callback closure as the last param
+
 class CoreDataHandler {
     private static var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "PapaPoppa")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
-                fatalError("Unresolved error \(error)")
+                fatalError("Unresolved error: \(error)")
             }
         })
         return container
@@ -59,27 +61,27 @@ class CoreDataHandler {
         }
     }
     
-    private static func makeCurrentLevel(_ number: Int16, _ callback: ((_ error: NSError?) -> Void)) {
+    public static func makeCurrentLevel(_ number: Int16, _ callback: ((_ error: NSError?) -> Void)) {
         fetchLevels { levels, error in
             if error != nil {
                 callback(error)
             } else {
+                let level_to_save = Level(context: persistentContainer.viewContext)
+                level_to_save.number = number
+                level_to_save.isCurrent = true
+                
                 for level in levels {
                     if level.number == number {
-                        let level_to_save = Level(context: persistentContainer.viewContext)
-                        level_to_save.number = level.number
                         level_to_save.best = level.best
-                        level_to_save.isCurrent = true
-                        
-                        do {
-                            try persistentContainer.viewContext.save()
-                            callback(nil)
-                        } catch let error as NSError {
-                            callback(error)
-                        }
                     }
                 }
-                callback(nil)
+                
+                do {
+                    try persistentContainer.viewContext.save()
+                    callback(nil)
+                } catch let error as NSError {
+                    callback(error)
+                }
             }
         }
     }
@@ -88,19 +90,14 @@ class CoreDataHandler {
         let level_to_save = Level(context: persistentContainer.viewContext)
         level_to_save.number = level.number
         level_to_save.best = level.best
-        level_to_save.isCurrent = false
+        level_to_save.isCurrent = true
+        print(level_to_save)
         
-        makeCurrentLevel(level.number + 1) { error in
-            if error != nil {
-                callback(error)
-            } else {
-                do {
-                    try self.persistentContainer.viewContext.save()
-                    callback(nil)
-                } catch let error as NSError {
-                    callback(error)
-                }
-            }
+        do {
+            try self.persistentContainer.viewContext.save()
+            callback(nil)
+        } catch let error as NSError {
+            callback(error)
         }
     }
 }

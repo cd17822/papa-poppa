@@ -12,7 +12,7 @@ import CoreData
 
 // MARK: - Global variables
 
-
+let POPPED_SCORE: Int16 = 250 // this is the really shitty score you get it if you let one pop
 
 // MARK: - Global functions
 
@@ -25,7 +25,7 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 }
 
 func random(min: Int, max: Int) -> Int {
-    return Int(random()) * (max - min) + min
+    return Int(random(min: CGFloat(min), max: CGFloat(max)))
 }
 
 // MARK: - Extensions
@@ -38,8 +38,10 @@ extension UIColor {
 
 extension CGRect {
     func intersectsAnyOf(_ otherViews: [UIView]) -> Bool {
-        for b in otherViews {
-            if self.intersects(b.frame) {
+        for v in otherViews {
+            if self.intersects(v.frame) {
+                print(self)
+                print(v.frame)
                 return true
             }
         }

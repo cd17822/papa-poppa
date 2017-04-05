@@ -10,10 +10,16 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+// This is the main screen
+// @ANNIKA also if you can make my design any better since I really didn't try with anything, go for it you have all the freedom in the world 🙂
+// and if you wanna do something like make the bubbles breathe i was thinking of doing that but it's more annoying than it sounds
+// (although it would be cute af)
+// and sounds - I've never worked with sounds before but if you wanna add some sound to a bubble popping that would probs be easy
+// (but idrc if you do it)
+
 class GameViewController: UIViewController {
     @IBOutlet var level_label: UILabel!
     @IBOutlet var best_label: UILabel!
-    var waiting_for_start = false // should be true once menu is implemented
     var level: Level?
     var bubbles_drawn = 0
     var bubbles_tapped = 0
@@ -26,30 +32,9 @@ class GameViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         loadLevel {
-            print("level loaded wooooooooooooooooo")
-            if self.waiting_for_start {
-                self.presentMenuScreen()
-            } else {
-                self.beginLevel()
-            }
+            // self.presentMenuScreen()
+            self.beginLevel() // this will eventually be commented out when presentMenuScreen is good to go
         }
-    }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -63,7 +48,7 @@ class GameViewController: UIViewController {
             if error != nil {
                 print(error!)
             }
-            print("------------got current level")
+
             self.level = level
             
             cb()
@@ -72,66 +57,90 @@ class GameViewController: UIViewController {
     
     func setLabels() {
         level_label.text = "Level: \(level!.number)"
-        best_label.text = "\(level!.best)"
+        best_label.text =  "Best: \(level!.best)"
     }
     
     func presentMenuScreen() {
-        // presents a MenuView which should have a background with an alpha value of 0.3-0.7
-        // MenuView should be fed the parameter `self.level` perhaps with a convenience init declared in the class
+        // @ANNIKA
+        // presents a MenuView (see MenuView.swift) which should have a background with an alpha value of 0.3-0.7
+        // MenuView should be fed `self.level` and `self` so that the level info can be presented and methods here can be called
+        // there should be two buttons, retry level and next level
+        // on top of the buttons maybe just show how you did that last round (number and score) or a welcome screen
+        // if retry level is pressed then you just need to call beginLevel() here
+        // if next level is pressed then you need to call CoreDataHandler.makeCurrentLevel(self.level.number! + 1) { error in ... }
+        // and the dots is where you'll then call beginLevel() here
+        // im not positive about the above logic but it seems to make sense to me
     }
     
     func beginLevel() {
-        setLabels()
-        generateBubbles()
+        loadLevel {
+            self.setLabels()
+            self.generateBubbles()
+        }
     }
     
     func generateBubbles() {
-        print("looking for level nooooooooooooooooo")
+        // @ANNIKA
+        // make these levels differ from each other with some degree of difficulty increase i suppose
         switch level!.number {
         case 1:
-            drawBubbles(amount: 1, withDurationBetween: [3,6])
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 2:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 3:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 4:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 5:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 6:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 7:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 8:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 9:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
+        case 10:
+            drawBubbles(amount: 2, withDurationBetween: [2,4])
         default:
-            level = CoreDataHandler.default_level_1
-            generateBubbles()
+            print("Error: level number is not 1-10")
         }
     }
     
     func drawBubbles(amount: Int, withDurationBetween durationRange: [Int]) {
         bubbles_drawn = amount
-        let bubbles = [BubbleButton]()
-        print("gere1")
+        var bubbles = [BubbleView]()
+    
         for _ in 0..<amount {
-            var frame = BubbleButton.generateRandomFrame(in: self.view!.frame)
-            print("gere")
+            var frame = BubbleView.generateRandomFrame(in: self.view!.frame)
             while frame.intersectsAnyOf(bubbles) {
-                frame = BubbleButton.generateRandomFrame(in: self.view!.frame)
+                frame = BubbleView.generateRandomFrame(in: self.view!.frame)
             }
-            print("richard")
-            let bubble = BubbleButton(frame: frame, vc: self, withDurationBetween: durationRange)
-            print("aaaaaaaaaaaaaaaaaaaaaaaaand")
+            
+            let bubble = BubbleView(frame: frame, vc: self, withDurationBetween: durationRange)
+            
             view!.addSubview(bubble)
-            print(bubble.frame)
-            print("not here")
+            bubbles.append(bubble)
         }
-        print("bubbles drawn")
     }
     
     func registerBubblePop(score: Int16) {
         self.score += score
         self.bubbles_tapped += 1
-        print("popped")
+        print("score: \(score)")
         if self.bubbles_tapped == self.bubbles_drawn {
             concludeLevel()
         }
-        
     }
     
     func concludeLevel() {
+        level!.best = max(score, level!.best)
+        
         CoreDataHandler.save(level: level!) { error in
             if error != nil {
                 print(error!)
             }
-            print("levelsaved")
             self.presentMenuScreen()
         }
     }
