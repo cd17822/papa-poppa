@@ -15,6 +15,12 @@
 		CBA1DED41E9441CB0003D5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA1DED21E9441CB0003D5C3 /* Main.storyboard */; };
 		CBA1DED61E9441CB0003D5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA1DED51E9441CB0003D5C3 /* Assets.xcassets */; };
 		CBA1DED91E9441CB0003D5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA1DED71E9441CB0003D5C3 /* LaunchScreen.storyboard */; };
+		CBA1DEE51E9488EF0003D5C3 /* BubbleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA1DEE41E9488EF0003D5C3 /* BubbleButton.xib */; };
+		CBA1DEE71E9489030003D5C3 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEE61E9489030003D5C3 /* BubbleButton.swift */; };
+		CBA1DEE91E948B410003D5C3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEE81E948B410003D5C3 /* Global.swift */; };
+		CBA1DEEB1E948E390003D5C3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEEA1E948E390003D5C3 /* MenuView.swift */; };
+		CBA1DEED1E9490010003D5C3 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEEC1E9490010003D5C3 /* CoreDataHandler.swift */; };
+		CBA1DEF01E94912B0003D5C3 /* Papa Poppa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEEE1E94912B0003D5C3 /* Papa Poppa.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		CBA1DED51E9441CB0003D5C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBA1DED81E9441CB0003D5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBA1DEDA1E9441CB0003D5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBA1DEE41E9488EF0003D5C3 /* BubbleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BubbleButton.xib; sourceTree = "<group>"; };
+		CBA1DEE61E9489030003D5C3 /* BubbleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
+		CBA1DEE81E948B410003D5C3 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		CBA1DEEA1E948E390003D5C3 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		CBA1DEEC1E9490010003D5C3 /* CoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
+		CBA1DEEF1E94912B0003D5C3 /* Papa Poppa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Papa Poppa.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +75,18 @@
 				CBA1DEC81E9441CB0003D5C3 /* AppDelegate.swift */,
 				CBA1DECA1E9441CB0003D5C3 /* GameScene.sks */,
 				CBA1DECC1E9441CB0003D5C3 /* Actions.sks */,
+				CBA1DEE61E9489030003D5C3 /* BubbleButton.swift */,
+				CBA1DEE41E9488EF0003D5C3 /* BubbleButton.xib */,
+				CBA1DEEC1E9490010003D5C3 /* CoreDataHandler.swift */,
+				CBA1DEE81E948B410003D5C3 /* Global.swift */,
 				CBA1DECE1E9441CB0003D5C3 /* GameScene.swift */,
+				CBA1DEEA1E948E390003D5C3 /* MenuView.swift */,
 				CBA1DED01E9441CB0003D5C3 /* GameViewController.swift */,
 				CBA1DED21E9441CB0003D5C3 /* Main.storyboard */,
 				CBA1DED51E9441CB0003D5C3 /* Assets.xcassets */,
 				CBA1DED71E9441CB0003D5C3 /* LaunchScreen.storyboard */,
 				CBA1DEDA1E9441CB0003D5C3 /* Info.plist */,
+				CBA1DEEE1E94912B0003D5C3 /* Papa Poppa.xcdatamodeld */,
 			);
 			path = "Papa Poppa";
 			sourceTree = "<group>";
@@ -134,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBA1DED41E9441CB0003D5C3 /* Main.storyboard in Resources */,
+				CBA1DEE51E9488EF0003D5C3 /* BubbleButton.xib in Resources */,
 				CBA1DECB1E9441CB0003D5C3 /* GameScene.sks in Resources */,
 				CBA1DED61E9441CB0003D5C3 /* Assets.xcassets in Resources */,
 				CBA1DED91E9441CB0003D5C3 /* LaunchScreen.storyboard in Resources */,
@@ -148,7 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA1DEED1E9490010003D5C3 /* CoreDataHandler.swift in Sources */,
+				CBA1DEF01E94912B0003D5C3 /* Papa Poppa.xcdatamodeld in Sources */,
+				CBA1DEE91E948B410003D5C3 /* Global.swift in Sources */,
+				CBA1DEEB1E948E390003D5C3 /* MenuView.swift in Sources */,
 				CBA1DECF1E9441CB0003D5C3 /* GameScene.swift in Sources */,
+				CBA1DEE71E9489030003D5C3 /* BubbleButton.swift in Sources */,
 				CBA1DED11E9441CB0003D5C3 /* GameViewController.swift in Sources */,
 				CBA1DEC91E9441CB0003D5C3 /* AppDelegate.swift in Sources */,
 			);
@@ -318,6 +342,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBA1DEEE1E94912B0003D5C3 /* Papa Poppa.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBA1DEEF1E94912B0003D5C3 /* Papa Poppa.xcdatamodel */,
+			);
+			currentVersion = CBA1DEEF1E94912B0003D5C3 /* Papa Poppa.xcdatamodel */;
+			path = "Papa Poppa.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CBA1DEBD1E9441CB0003D5C3 /* Project object */;
 }

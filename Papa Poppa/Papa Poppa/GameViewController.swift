@@ -11,13 +11,19 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    @IBOutlet var level_label: UILabel!
+    @IBOutlet var best_label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
+                if let gs = scene as? GameScene {
+                    gs.view_controller = self
+                }
+                
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
@@ -51,5 +57,12 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    // MARK: - Personal
+    
+    func setLabels(level: Level) {
+        level_label.text = "Level: \(level.number)"
+        best_label.text = "\(level.best)"
     }
 }
