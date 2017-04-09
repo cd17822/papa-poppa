@@ -20,6 +20,7 @@ import GameplayKit
 class GameViewController: UIViewController {
     @IBOutlet var level_label: UILabel!
     @IBOutlet var best_label: UILabel!
+    @IBOutlet weak var menuView: UIView!
     var level: Level?
     var bubbles_drawn = 0
     var bubbles_tapped = 0
@@ -61,6 +62,8 @@ class GameViewController: UIViewController {
     }
     
     func presentMenuScreen() {
+        let menu = MenuView(gc: self)
+        self.view.addSubview(menu)
         // @ANNIKA
         // presents a MenuView (see MenuView.swift) which should have a background with an alpha value of 0.3-0.7
         // MenuView should be fed `self.level` and `self` so that the level info can be presented and methods here can be called

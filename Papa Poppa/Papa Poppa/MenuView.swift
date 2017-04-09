@@ -12,12 +12,20 @@ import UIKit
 
 class MenuView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var button: UIButton!
+    var gc: GameViewController?
+    
+    init(gc gcIn: GameViewController) {
+        gc = gcIn
+        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        self.button.setTitle("Reset", for:[])
     }
-    */
-
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
 }
