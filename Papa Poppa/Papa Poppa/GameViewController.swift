@@ -84,25 +84,25 @@ class GameViewController: UIViewController {
         // make these levels differ from each other with some degree of difficulty increase i suppose
         switch level!.number {
         case 1:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 2, withDurationBetween: [2,12])
         case 2:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 2, withDurationBetween: [2,10])
         case 3:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 3, withDurationBetween: [2,9])
         case 4:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 3, withDurationBetween: [3,8])
         case 5:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 4, withDurationBetween: [3,6])
         case 6:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 4, withDurationBetween: [4,6])
         case 7:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 5, withDurationBetween: [2,4])
         case 8:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 5, withDurationBetween: [3,7])
         case 9:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 5, withDurationBetween: [3,5])
         case 10:
-            drawBubbles(amount: 2, withDurationBetween: [2,4])
+            drawBubbles(amount: 6, withDurationBetween: [3,4])
         default:
             print("Error: level number is not 1-10")
         }
