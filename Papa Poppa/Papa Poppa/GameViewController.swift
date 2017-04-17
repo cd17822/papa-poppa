@@ -65,11 +65,7 @@ class GameViewController: UIViewController {
         menuView = MenuView(frame: self.view!.frame, vc: self)
         view.addSubview(menuView)
         view.bringSubview(toFront: menuView)
-//        let DynamicView=UIView(frame: CGRect(x:100, y:200, width:100, height:100))
-//        DynamicView.backgroundColor=UIColor.green
-//        DynamicView.layer.cornerRadius=25
-//        DynamicView.layer.borderWidth=2
-//        self.view.addSubview(DynamicView)
+
         // @ANNIKA
         // presents a MenuView (see MenuView.swift) which should have a background with an alpha value of 0.3-0.7
         // MenuView should be fed `self.level` and `self` so that the level info can be presented and methods here can be called
