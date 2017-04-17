@@ -20,7 +20,7 @@ import GameplayKit
 class GameViewController: UIViewController {
     @IBOutlet var level_label: UILabel!
     @IBOutlet var best_label: UILabel!
-    @IBOutlet weak var menuView: UIView!
+    @IBOutlet var menuView: UIView!
     var level: Level?
     var bubbles_drawn = 0
     var bubbles_tapped = 0
@@ -33,8 +33,8 @@ class GameViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         loadLevel {
-            // self.presentMenuScreen()
-            self.beginLevel() // this will eventually be commented out when presentMenuScreen is good to go
+            self.presentMenuScreen()
+            //self.beginLevel() // this will eventually be commented out when presentMenuScreen is good to go
         }
     }
 
@@ -62,8 +62,14 @@ class GameViewController: UIViewController {
     }
     
     func presentMenuScreen() {
-        let menu = MenuView(gc: self)
-        self.view.addSubview(menu)
+        menuView = MenuView(frame: self.view!.frame, vc: self)
+        view.addSubview(menuView)
+        view.bringSubview(toFront: menuView)
+//        let DynamicView=UIView(frame: CGRect(x:100, y:200, width:100, height:100))
+//        DynamicView.backgroundColor=UIColor.green
+//        DynamicView.layer.cornerRadius=25
+//        DynamicView.layer.borderWidth=2
+//        self.view.addSubview(DynamicView)
         // @ANNIKA
         // presents a MenuView (see MenuView.swift) which should have a background with an alpha value of 0.3-0.7
         // MenuView should be fed `self.level` and `self` so that the level info can be presented and methods here can be called
