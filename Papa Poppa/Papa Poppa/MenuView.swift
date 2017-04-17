@@ -15,6 +15,7 @@ class MenuView: UIView {
     var vc: GameViewController?
     var nextLevelButton: UIButton!
     var retryLevelButton: UIButton!
+    var level: Level?
 
     override init(frame: CGRect) { // for using CustomView in code
         super.init(frame: frame)
@@ -24,10 +25,11 @@ class MenuView: UIView {
         super.init(coder: aDecoder)
     }
     
-    convenience init(frame: CGRect, vc vcIn: GameViewController) {
+    convenience init(frame: CGRect, vc vcIn: GameViewController, levelIn: Level) {
         self.init(frame: frame)
         vc = vcIn
         self.alpha = 0.3
+        level = levelIn
         
         nextLevelButton = UIButton(frame: CGRect(x: self.frame.size.width/2, y: (self.frame.size.height/2)-100, width: 100, height: 50))
         nextLevelButton.setTitle("Next Level", for: UIControlState.normal)
@@ -44,14 +46,15 @@ class MenuView: UIView {
     
     func nextLevel(_ sender: UITapGestureRecognizer) {
         print("switchLevelButtonPressed")
-        nextLevelButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+        level?.number += 1
         vc?.beginLevel()
         removeFromSuperview()
     }
     
     func retryLevel(_ sender: UITapGestureRecognizer) {
         print("nextLevelButtonPressed")
+        vc?.beginLevel()
         retryLevelButton.setTitleColor(UIColor.red, for: UIControlState.normal)
-        //        removeFromSuperview()
+        removeFromSuperview()
     }
 }
