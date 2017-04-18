@@ -62,6 +62,8 @@ class CoreDataHandler {
     }
     
     public static func makeCurrentLevel(_ number: Int16, _ callback: ((_ error: NSError?) -> Void)) {
+        print("makecurrentlevel")
+        print(number)
         fetchLevels { levels, error in
             if error != nil {
                 callback(error)
@@ -74,11 +76,12 @@ class CoreDataHandler {
                     if level.number == number {
                         level_to_save.best = level.best
                     }
-                    level_to_save.isCurrent = false
+                    level.isCurrent = false
                 }
                 
                 level_to_save.isCurrent = true
-                
+                print("LEVEL TO SAVE")
+                print(level_to_save)
                 do {
                     try persistentContainer.viewContext.save()
                     callback(nil)

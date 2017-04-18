@@ -73,6 +73,7 @@ class MenuView: UIView {
     
     func nextLevel(_ sender: UITapGestureRecognizer) {
         print("switchLevelButtonPressed")
+        
         CoreDataHandler.makeCurrentLevel((self.level?.number)! + 1) { error in vc?.beginLevel() }
 //        vc?.beginLevel()
         self.removeFromSuperview()
