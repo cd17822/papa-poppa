@@ -64,6 +64,7 @@ class GameViewController: UIViewController {
     
     func presentMenuScreen() {
         menuView = MenuView(frame: self.view!.frame, vc: self, levelIn: (self.level)!)
+        print(level!.number)
         self.view.addSubview(menuView)
 
         // @ANNIKA
@@ -78,7 +79,7 @@ class GameViewController: UIViewController {
     }
     
     func beginLevel() {
-        menuView.removeFromSuperview()
+        //menuView.removeFromSuperview()
         loadLevel {
             self.setLabels()
             self.generateBubbles()
@@ -148,8 +149,6 @@ class GameViewController: UIViewController {
                 self.presentMenuScreen()
             }
         }
-        self.bubbles_tapped = 0;
-        self.bubbles_drawn = 0;
         
     }
 }

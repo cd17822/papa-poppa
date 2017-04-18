@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90AA36D51EA6824F002FA039 /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90AA36D41EA6824F002FA039 /* pop.wav */; };
 		CBA1DEC91E9441CB0003D5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DEC81E9441CB0003D5C3 /* AppDelegate.swift */; };
 		CBA1DED11E9441CB0003D5C3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1DED01E9441CB0003D5C3 /* GameViewController.swift */; };
 		CBA1DED41E9441CB0003D5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA1DED21E9441CB0003D5C3 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		90AA36D41EA6824F002FA039 /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
 		CBA1DEC51E9441CB0003D5C3 /* Papa Poppa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Papa Poppa.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA1DEC81E9441CB0003D5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA1DED01E9441CB0003D5C3 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				CBA1DED71E9441CB0003D5C3 /* LaunchScreen.storyboard */,
 				CBA1DEDA1E9441CB0003D5C3 /* Info.plist */,
 				CBA1DEEE1E94912B0003D5C3 /* PapaPoppa.xcdatamodeld */,
+				90AA36D41EA6824F002FA039 /* pop.wav */,
 			);
 			path = "Papa Poppa";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				CBA1DED41E9441CB0003D5C3 /* Main.storyboard in Resources */,
 				CBA1DEE51E9488EF0003D5C3 /* BubbleView.xib in Resources */,
+				90AA36D51EA6824F002FA039 /* pop.wav in Resources */,
 				CBA1DED61E9441CB0003D5C3 /* Assets.xcassets in Resources */,
 				CBA1DED91E9441CB0003D5C3 /* LaunchScreen.storyboard in Resources */,
 			);

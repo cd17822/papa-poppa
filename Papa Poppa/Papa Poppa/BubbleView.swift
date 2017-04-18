@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 // BUBBLES
 
@@ -33,6 +34,7 @@ class BubbleView: UIControl {
     }
     @IBOutlet var label: UILabel!
     @IBOutlet var content_view: UIView!
+    var popSound: AVAudioPlayer!
     
     override func awakeFromNib() {
         print("awkeFromNib")
@@ -74,6 +76,16 @@ class BubbleView: UIControl {
     
     func handleTap(_ sender: UITapGestureRecognizer) {
         popped = true
+        let path = Bundle.main.path(forResource: "pop.wav", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            let sound = try AVAudioPlayer(contentsOf: url)
+            popSound = sound
+            sound.play()
+        } catch {
+            print("shit")
+        }
         print("touched")
         self.vc?.registerBubblePop(score: score)
         removeFromSuperview()

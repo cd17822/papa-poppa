@@ -33,11 +33,6 @@ class MenuView: UIView {
         self.alpha = 0.5
         level = levelIn
         
-//        lastScoreLabel = UILabel(frame: CGRect(x: (self.frame.size.width/2)-50, y: 10, width: 100, height: 50))
-//        lastScoreLabel.textColor = UIColor.white.withAlphaComponent(1.0)
-//        lastScoreLabel.text = "Papa"
-    
-        if(level?.number == 1){
             startButton = UIButton(frame: CGRect(x: (self.frame.size.width/2)-50, y: (self.frame.size.height/2)-150, width: 100, height: 50))
             startButton.setTitle("Start", for: UIControlState.normal)
             startButton.setTitleColor(UIColor.white.withAlphaComponent(1.0), for: UIControlState.normal)
@@ -46,9 +41,7 @@ class MenuView: UIView {
             startButton.layer.borderColor = UIColor.white.cgColor
             startButton.layer.borderWidth = 2
             startButton.addTarget(self, action: #selector(MenuView.nextLevel(_:)), for: UIControlEvents.touchDown)
-            self.addSubview(startButton)
-        }
-        else{
+
                 nextLevelButton = UIButton(frame: CGRect(x: (self.frame.size.width/2)-50, y: (self.frame.size.height/2)-150, width: 100, height: 50))
                 nextLevelButton.setTitle("Next Level", for: UIControlState.normal)
                 nextLevelButton.setTitleColor(UIColor.white.withAlphaComponent(1.0), for: UIControlState.normal)
@@ -57,7 +50,7 @@ class MenuView: UIView {
                 nextLevelButton.layer.borderColor = UIColor.white.cgColor
                 nextLevelButton.layer.borderWidth = 2
                 nextLevelButton.addTarget(self, action: #selector(MenuView.nextLevel(_:)), for: UIControlEvents.touchDown)
-                self.addSubview(nextLevelButton)
+                //self.addSubview(nextLevelButton)
             
                 retryLevelButton = UIButton(frame: CGRect(x: (self.frame.size.width/2)-50, y: (self.frame.size.height/2)-95, width: 100, height: 50))
                 retryLevelButton.setTitle("Retry Level", for: UIControlState.normal)
@@ -67,10 +60,15 @@ class MenuView: UIView {
                 retryLevelButton.layer.borderColor = UIColor.white.cgColor
                 retryLevelButton.layer.borderWidth = 2
                 retryLevelButton.addTarget(self, action: #selector(MenuView.retryLevel(_:)), for: UIControlEvents.touchDown)
-                self.addSubview(retryLevelButton)
+                //self.addSubview(retryLevelButton)
 
+        if(level!.number == 1){
+            self.addSubview(startButton)
         }
-
+        else{
+            self.addSubview(retryLevelButton)
+            self.addSubview(nextLevelButton)
+        }
     }
     
     func nextLevel(_ sender: UITapGestureRecognizer) {
