@@ -13,7 +13,7 @@ import CoreData
 // MARK: - Global variables
 
 let POPPED_SCORE: Int16 = 250 // this is the really shitty score you get it if you let one pop
-
+var gameNotStarted = true
 // MARK: - Global functions
 
 func random() -> CGFloat {
