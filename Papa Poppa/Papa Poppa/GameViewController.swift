@@ -63,6 +63,7 @@ class GameViewController: UIViewController {
     }
     
     func presentMenuScreen() {
+        print("presentMenuScreen")
         menuView = MenuView(frame: self.view!.frame, vc: self, levelIn: (self.level)!)
         print(level!.number)
         self.view.addSubview(menuView)
@@ -117,6 +118,7 @@ class GameViewController: UIViewController {
     
     func drawBubbles(amount: Int, withDurationBetween durationRange: [Int]) {
         bubbles_drawn = amount
+        bubbles_tapped = 0
         var bubbles = [BubbleView]()
     
         for _ in 0..<amount {
@@ -133,10 +135,15 @@ class GameViewController: UIViewController {
     }
     
     func registerBubblePop(score: Int16) {
+        print("register bubble pop")
         self.score += score
         self.bubbles_tapped += 1
         print("score: \(score)")
+        print("drawn \(self.bubbles_drawn)")
+        print("tapped \(self.bubbles_tapped)")
+        
         if self.bubbles_tapped == self.bubbles_drawn {
+            
             concludeLevel()
         }
     }
@@ -146,6 +153,7 @@ class GameViewController: UIViewController {
         CoreDataHandler.save(level: level!) { error in
             if error != nil {
                 print(error!)
+            }else{
                 self.presentMenuScreen()
             }
         }

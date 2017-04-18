@@ -62,7 +62,7 @@ class MenuView: UIView {
                 retryLevelButton.addTarget(self, action: #selector(MenuView.retryLevel(_:)), for: UIControlEvents.touchDown)
                 //self.addSubview(retryLevelButton)
 
-        if(level!.number == 1){
+        if(level!.number == 1 && false){
             self.addSubview(startButton)
         }
         else{
