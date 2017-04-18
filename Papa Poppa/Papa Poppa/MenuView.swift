@@ -74,7 +74,9 @@ class MenuView: UIView {
     func nextLevel(_ sender: UITapGestureRecognizer) {
         print("switchLevelButtonPressed")
         
-        CoreDataHandler.makeCurrentLevel((self.level?.number)! + 1) { error in vc?.beginLevel() }
+        let next_level = self.level!.number == 10 ? 1 : self.level!.number + 1
+        
+        CoreDataHandler.makeCurrentLevel(next_level) { error in vc?.beginLevel() }
 //        vc?.beginLevel()
         self.removeFromSuperview()
         
