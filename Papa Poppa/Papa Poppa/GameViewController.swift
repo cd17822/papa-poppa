@@ -145,8 +145,8 @@ class GameViewController: UIViewController {
         CoreDataHandler.save(level: level!) { error in
             if error != nil {
                 print(error!)
+                self.presentMenuScreen()
             }
-            self.presentMenuScreen()
         }
         self.bubbles_tapped = 0;
         self.bubbles_drawn = 0;
