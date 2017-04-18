@@ -33,12 +33,9 @@ class MenuView: UIView {
         self.alpha = 0.5
         level = levelIn
         
-        lastScoreLabel = UILabel(frame: CGRect(x: (self.frame.size.width/2)-50, y: (self.frame.size.height/2)-150, width: 100, height: 50))
-        lastScoreLabel.textColor = UIColor.white.withAlphaComponent(1.0)
-        	
-        lastScoreLabel.text = "Papa"
-        
-        //lastScoreLabel.text = "Poppa Pappa"
+//        lastScoreLabel = UILabel(frame: CGRect(x: (self.frame.size.width/2)-50, y: 10, width: 100, height: 50))
+//        lastScoreLabel.textColor = UIColor.white.withAlphaComponent(1.0)
+//        lastScoreLabel.text = "Papa"
     
         if(level?.number == 1){
             startButton = UIButton(frame: CGRect(x: (self.frame.size.width/2)-50, y: (self.frame.size.height/2)-150, width: 100, height: 50))

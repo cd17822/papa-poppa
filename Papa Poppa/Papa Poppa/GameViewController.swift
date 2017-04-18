@@ -20,7 +20,7 @@ import GameplayKit
 class GameViewController: UIViewController {
     @IBOutlet var level_label: UILabel!
     @IBOutlet var best_label: UILabel!
-    @IBOutlet var menuView: UIView!
+    var menuView: UIView!
     
     var level: Level?
     var bubbles_drawn = 0
@@ -148,5 +148,8 @@ class GameViewController: UIViewController {
             }
             self.presentMenuScreen()
         }
+        self.bubbles_tapped = 0;
+        self.bubbles_drawn = 0;
+        
     }
 }
