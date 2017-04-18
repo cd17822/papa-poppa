@@ -67,9 +67,9 @@ class GameViewController: UIViewController {
         self.view.addSubview(menuView)
 
         // @ANNIKA
-        // presents a MenuView (see MenuView.swift) which should have a background with an alpha value of 0.3-0.7 DONE
-        // MenuView should be fed `self.level` and `self` so that the level info can be presented and methods here can be called DONE
-        // there should be two buttons, retry level and next level DONE
+        // presents a MenuView (see MenuView.swift) which should have a background with an alpha value of 0.3-0.7
+        // MenuView should be fed `self.level` and `self` so that the level info can be presented and methods here can be called
+        // there should be two buttons, retry level and next level 
         // on top of the buttons maybe just show how you did that last round (number and score) or a welcome screen
         // if retry level is pressed then you just need to call beginLevel() here
         // if next level is pressed then you need to call CoreDataHandler.makeCurrentLevel(self.level.number! + 1) { error in ... }
