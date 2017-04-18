@@ -20,6 +20,7 @@ import GameplayKit
 class GameViewController: UIViewController {
     @IBOutlet var level_label: UILabel!
     @IBOutlet var best_label: UILabel!
+    @IBOutlet var score_label: UILabel!
     var menuView: UIView!
     
     var level: Level?
@@ -60,6 +61,7 @@ class GameViewController: UIViewController {
     func setLabels() {
         level_label.text = "Level: \(level!.number)"
         best_label.text =  "Best: \(level!.best)"
+        score_label.text = "Score: \(self.score)"
     }
     
     func presentMenuScreen() {
@@ -137,7 +139,9 @@ class GameViewController: UIViewController {
     func registerBubblePop(score: Int16) {
         print("register bubble pop")
         self.score += score
+        self.score_label.text = "Score: \(self.score)"
         self.bubbles_tapped += 1
+        
         print("score: \(score)")
         print("drawn \(self.bubbles_drawn)")
         print("tapped \(self.bubbles_tapped)")
@@ -150,6 +154,7 @@ class GameViewController: UIViewController {
     
     func concludeLevel() {
         level!.best = max(score, level!.best)
+        best_label.text = "Best: \(level!.best)"
         CoreDataHandler.save(level: level!) { error in
             if error != nil {
                 print(error!)
