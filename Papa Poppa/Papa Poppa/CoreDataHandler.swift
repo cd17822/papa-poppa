@@ -68,13 +68,16 @@ class CoreDataHandler {
             } else {
                 let level_to_save = Level(context: persistentContainer.viewContext)
                 level_to_save.number = number
-                level_to_save.isCurrent = true
+                
                 
                 for level in levels {
                     if level.number == number {
                         level_to_save.best = level.best
                     }
+                    level_to_save.isCurrent = false
                 }
+                
+                level_to_save.isCurrent = true
                 
                 do {
                     try persistentContainer.viewContext.save()
