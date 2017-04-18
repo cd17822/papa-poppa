@@ -46,15 +46,15 @@ class MenuView: UIView {
     
     func nextLevel(_ sender: UITapGestureRecognizer) {
         print("switchLevelButtonPressed")
-        level?.number += 1
-        vc?.beginLevel()
-        removeFromSuperview()
+        CoreDataHandler.makeCurrentLevel((self.level?.number)! + 1) { error in vc?.beginLevel() }
+//        vc?.beginLevel()
+        self.removeFromSuperview()
+        
     }
     
     func retryLevel(_ sender: UITapGestureRecognizer) {
         print("nextLevelButtonPressed")
         vc?.beginLevel()
-        retryLevelButton.setTitleColor(UIColor.red, for: UIControlState.normal)
         removeFromSuperview()
     }
 }

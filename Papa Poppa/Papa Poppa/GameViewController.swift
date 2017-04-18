@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
     @IBOutlet var level_label: UILabel!
     @IBOutlet var best_label: UILabel!
     @IBOutlet var menuView: UIView!
+    
     var level: Level?
     var bubbles_drawn = 0
     var bubbles_tapped = 0
@@ -63,8 +64,7 @@ class GameViewController: UIViewController {
     
     func presentMenuScreen() {
         menuView = MenuView(frame: self.view!.frame, vc: self, levelIn: (self.level)!)
-        view.addSubview(menuView)
-        view.bringSubview(toFront: menuView)
+        self.view.addSubview(menuView)
 
         // @ANNIKA
         // presents a MenuView (see MenuView.swift) which should have a background with an alpha value of 0.3-0.7 DONE
@@ -78,6 +78,7 @@ class GameViewController: UIViewController {
     }
     
     func beginLevel() {
+        menuView.removeFromSuperview()
         loadLevel {
             self.setLabels()
             self.generateBubbles()
@@ -91,7 +92,7 @@ class GameViewController: UIViewController {
         case 1:
             drawBubbles(amount: 2, withDurationBetween: [2,12])
         case 2:
-            drawBubbles(amount: 2, withDurationBetween: [2,10])
+            drawBubbles(amount: 3, withDurationBetween: [2,10])
         case 3:
             drawBubbles(amount: 3, withDurationBetween: [2,9])
         case 4:
@@ -141,7 +142,6 @@ class GameViewController: UIViewController {
     
     func concludeLevel() {
         level!.best = max(score, level!.best)
-        
         CoreDataHandler.save(level: level!) { error in
             if error != nil {
                 print(error!)
